@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/phillmac/DiscordArchiveBot#readme",
   "dependencies": {
-    "discord": "^0.8.2"
+    "discord.io": "^2.5.3",
+    "winston": "^3.3.3"
   }
 }
