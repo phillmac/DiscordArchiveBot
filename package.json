@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/phillmac/DiscordArchiveBot/issues"
   },
-  "homepage": "https://github.com/phillmac/DiscordArchiveBot#readme"
+  "homepage": "https://github.com/phillmac/DiscordArchiveBot#readme",
+  "dependencies": {
+    "discord": "^0.8.2"
+  }
 }
