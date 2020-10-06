@@ -37,7 +37,7 @@ module.exports = class MeowCommand extends Command {
       body: JSON.stringify({ items: [{ galleryName, galleryType, priority: 110 }] }),
       headers: { 'Content-Type': 'application/json' },
     })
-    const msg = await res.text()
+    const msg = await resp.text()
     console.log({ galleryName, galleryType, msg })
     return message.say(`Added ${JSON.stringify({ galleryName, galleryType, msg })} to ripper queue`)
   }
