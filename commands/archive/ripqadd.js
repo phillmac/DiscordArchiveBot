@@ -34,7 +34,7 @@ module.exports = class MeowCommand extends Command {
   async run(message, { galleryName, galleryType }) {
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_URL, {
       method: 'post',
-      body: JSON.stringify({ items: [{ deviant: galleryName, mode: galleryType, priority: 110 }] }),
+      body: JSON.stringify([{ deviant: galleryName, mode: galleryType, priority: 110 }]),
       headers: { 'Content-Type': 'application/json' },
     })
     const msg = await resp.text()
