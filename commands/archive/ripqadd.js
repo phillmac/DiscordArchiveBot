@@ -14,7 +14,7 @@ module.exports = class RipperQueueAddCommand extends Command {
       group: 'archive',
       memberName: 'ripqadd',
       description: 'Enques an existing gallery to be ripped',
-      guildOnly: true,
+      guildOnly: false,
       args: [
         {
           key: 'galleryName',
