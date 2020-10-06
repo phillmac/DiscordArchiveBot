@@ -4,11 +4,13 @@ ENV NODE_PATH=/usr/local/lib/node_modules
 
 RUN apt-get update && apt-get install build-essential -y && npm install -g --unsafe-perm enmap
 
-COPY bot.js package.json package-lock.json /archivebot/
+COPY package.json package-lock.json /archivebot/
+RUN npm install
+
+COPY bot.js /archivebot/
 COPY commands/ /archivebot/commands/
 
 WORKDIR /archivebot
 
-RUN npm install
 
 CMD ["node", "./bot.js"]
