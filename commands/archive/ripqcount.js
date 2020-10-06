@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando')
 const fetch = require('node-fetch')
 const logger = require('winston')
 
-if (!process.env.RIPER_QUEUE_ADD_URL) {
+if (!process.env.RIPER_QUEUE_COUNT_URL) {
   throw new Error('RIPER_QUEUE_COUNT_URL is required')
 }
 
