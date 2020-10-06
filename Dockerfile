@@ -4,6 +4,6 @@ COPY * /archivebot/
 
 WORKDIR /archivebot
 
-RUN sudo apt-get update && sudo apt-get install build-essential -y && npm install
+RUN apt-get update && apt-get install build-essential -y && npm install
 
 CMD ["node" "./bot.js"]
