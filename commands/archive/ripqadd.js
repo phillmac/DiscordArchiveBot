@@ -31,14 +31,14 @@ module.exports = class MeowCommand extends Command {
     })
   }
 
-  run(message, { galleryName, galleryType }) {
-    fetch(process.env.RIPER_QUEUE_ADD_URL, {
+  async run(message, { galleryName, galleryType }) {
+    const resp = await fetch(process.env.RIPER_QUEUE_ADD_URL, {
       method: 'post',
       body: JSON.stringify({ items: [{ galleryName, galleryType, priority: 110 }] }),
       headers: { 'Content-Type': 'application/json' },
     })
-      .then(res => res.json()) // expecting a json response
-      .then(msg => console.log({ galleryName, galleryType, msg }));
+    const msg = await res.text()
+    console.log({ galleryName, galleryType, msg })
     return message.say(`Added ${JSON.stringify({ galleryName, galleryType, msg })} to ripper queue`)
   }
 }
