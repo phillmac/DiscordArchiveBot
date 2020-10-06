@@ -1,6 +1,6 @@
 from node:14
 
-COPY * /archivebot
+COPY * /archivebot/
 
 WORKDIR /archivebot
 
