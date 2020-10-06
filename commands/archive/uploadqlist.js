@@ -14,7 +14,7 @@ module.exports = class MeowCommand extends Command {
 
   run (message) {
     this.client.archive.uploadQueue.ensure(message.guild.id, [])
-    const uploadQueue = this.client.archive.uploadQueue.get(message.guild.id)
+    const uploadQueue = new Set(this.client.archive.uploadQueue.get(message.guild.id))
     message.say('Upload queue contents:')
     return message.say(JSON.stringify(uploadQueue, null, 2))
   }
