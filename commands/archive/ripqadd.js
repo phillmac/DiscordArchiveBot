@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando')
 const fetch = require('node-fetch')
+const logger = require('winston')
 
 if (!process.env.RIPER_QUEUE_ADD_URL) {
   throw new Error('RIPER_QUEUE_ADD_URL is required')
@@ -37,7 +38,7 @@ module.exports = class RipperQueueAddCommand extends Command {
       headers: { 'Content-Type': 'application/json' }
     })
     const msg = await resp.text()
-    console.log({ galleryName, galleryType, msg })
+    logger.debug({ galleryName, galleryType, msg })
     return message.say(`Added ${JSON.stringify({ galleryName, galleryType, msg })} to ripper queue`)
   }
 }

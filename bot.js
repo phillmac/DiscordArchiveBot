@@ -38,11 +38,11 @@ client.archive = {
 }
 
 client.once('ready', () => {
-  console.log(`Logged in as ${client.user.tag}! (${client.user.id})`)
+  logger.info(`Logged in as ${client.user.tag}! (${client.user.id})`)
   client.user.setActivity('with Commando')
 })
 
-client.on('error', console.error)
+client.on('error', logger.error)
 
 if (!process.env.AUTH_TOKEN) {
   const auth = require('./auth.json')
