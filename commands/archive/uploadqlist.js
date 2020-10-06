@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando')
 
 module.exports = class MeowCommand extends Command {
-  constructor (client) {
+  constructor(client) {
     super(client, {
       name: 'uploadqlist',
       aliases: ['upload-queue-list', 'uql'],
@@ -12,11 +12,9 @@ module.exports = class MeowCommand extends Command {
     })
   }
 
-  run (message) {
+  run(message) {
     this.client.archive.uploadQueue.ensure(message.guild.id, [])
-    const uploadQueue = new Set()
-    this.client.archive.uploadQueue.get(message.guild.id).forEach(item => uploadQueue.add(item))
     message.say('Upload queue contents:')
-    return message.say(JSON.stringify(uploadQueue, null, 2))
+    return message.say(JSON.stringify(this.client.archive.uploadQueue.get(message.guild.id), null, 2))
   }
 }
