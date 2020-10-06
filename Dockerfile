@@ -1,6 +1,6 @@
 from node:14
 
-COPY commands/ bot.js package.json package-lock.json /archivebot/
+COPY commands bot.js package.json package-lock.json /archivebot/
 
 WORKDIR /archivebot
 
