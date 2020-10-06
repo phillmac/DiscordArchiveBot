@@ -1,6 +1,6 @@
 FROM node:14
 
-ENV NODE_PATH=/usr/lib/node_modules
+ENV NODE_PATH=/usr/local/lib/node_modules
 
 RUN apt-get update && apt-get install build-essential -y && npm install -g --unsafe-perm enmap
 
