@@ -50,4 +50,3 @@ if (!process.env.AUTH_TOKEN) {
 } else {
   client.login(process.env.AUTH_TOKEN)
 }
-

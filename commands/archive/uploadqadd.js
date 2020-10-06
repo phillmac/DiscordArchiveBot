@@ -1,14 +1,14 @@
 const { Command } = require('discord.js-commando')
 
 module.exports = class MeowCommand extends Command {
-  constructor(client) {
+  constructor (client) {
     super(client, {
       name: 'uploadqadd',
       aliases: ['upload-queue-add', 'uqa'],
       group: 'archive',
       memberName: 'uploadqadd',
-      description: 'Enques an existing gallery to be uploaded to the archive site'
-      , guildOnly: true,
+      description: 'Enques an existing gallery to be uploaded to the archive site',
+      guildOnly: true,
       args: [
         {
           key: 'galleryName',
@@ -25,9 +25,9 @@ module.exports = class MeowCommand extends Command {
     })
   }
 
-  run(message, { galleryName, galleryType }) {
+  run (message, { galleryName, galleryType }) {
     this.client.archive.uploadQueue.ensure(message.guild.id, [])
-    this.client.archive.uploadQueue.push(message.guild.id, { galleryName, galleryType }, null, allowDupes = false)
+    this.client.archive.uploadQueue.push(message.guild.id, { galleryName, galleryType }, null, false)
     return message.say(`Added ${{ galleryName, galleryType }} to upload queue`)
   }
 }

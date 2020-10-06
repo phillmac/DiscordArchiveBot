@@ -7,8 +7,8 @@ module.exports = class MeowCommand extends Command {
       aliases: ['upload-queue-list', 'uql'],
       group: 'archive',
       memberName: 'uploadqlist',
-      description: 'Enques an existing gallery to be uploaded to the archive site'
-      ,guildOnly: true
+      description: 'Enques an existing gallery to be uploaded to the archive site',
+      guildOnly: true
     })
   }
 
