@@ -27,7 +27,7 @@ module.exports = class MeowCommand extends Command {
 
   run(message, { galleryName, galleryType }) {
     this.client.archive.uploadQueue.ensure(message.guild.id, [])
-    this.client.archive.uploadQueue.push(message.guild.id, { galleryName, galleryType }, allowDupes = false)
+    this.client.archive.uploadQueue.push(message.guild.id, { galleryName, galleryType }, null, allowDupes = false)
     return message.say(`Added ${{ galleryName, galleryType }} to upload queue`)
   }
 }
