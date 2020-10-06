@@ -21,7 +21,7 @@ const client = new CommandoClient({
 client.registry
   .registerDefaultTypes()
   .registerGroups([
-    ['archive', 'Archive Command Group']
+    ['archive', 'IPFS Archive']
   ])
   .registerDefaultGroups()
   .registerDefaultCommands()
