@@ -18,6 +18,7 @@
   "homepage": "https://github.com/phillmac/DiscordArchiveBot#readme",
   "dependencies": {
     "discord.js": "^12.3.1",
+    "discord.js-commando": "github:discordjs/Commando",
     "winston": "^3.3.3"
   }
 }
