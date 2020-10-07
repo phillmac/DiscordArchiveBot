@@ -15,7 +15,7 @@ module.exports = class UploadQueueVoteCommand extends Command {
   run (message) {
     this.client.archive.uploadQueue.ensure(message.guild.id, [])
     const uploadQueue = [...this.client.archive.uploadQueue.get(message.guild.id)]
-    if(uploadQueue.length > 0) {
+    if (uploadQueue.length > 0) {
       message.say(`/poll "Vote on what to upload next!" ${uploadQueue.map(qi => `"${qi.galleryName} ${qi.galleryType}"`).join(' ')}`)
     } else {
       return message.say('Upload queue is empty! Add some items first.')
