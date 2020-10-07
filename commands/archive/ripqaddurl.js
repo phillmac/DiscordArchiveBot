@@ -30,7 +30,6 @@ module.exports = class RipperQueueAddUrlCommand extends Command {
       method: 'post',
       body: `url=${url}`
     })
-    const msg = await resp.text()
     logger.debug({ url })
     return message.say(`Added ${url} to ripper queue`)
   }
