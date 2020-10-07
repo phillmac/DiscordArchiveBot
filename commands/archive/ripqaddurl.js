@@ -7,7 +7,7 @@ if (!process.env.RIPER_QUEUE_ADD_U_URL) {
 }
 
 module.exports = class RipperQueueAddUrlCommand extends Command {
-  constructor (client) {
+  constructor(client) {
     super(client, {
       name: 'ripqaddurl',
       aliases: ['rip-queue-add-url', 'rqau'],
@@ -25,10 +25,12 @@ module.exports = class RipperQueueAddUrlCommand extends Command {
     })
   }
 
-  async run (message, { url }) {
+  async run(message, { url }) {
+    const params = new URLSearchParams();
+    params.append(...{ url });
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_U_URL, {
-      method: 'post',
-      body: {url}
+      method: 'POST',
+      body: params
     })
     const status = await resp.text()
     logger.debug({ url })
