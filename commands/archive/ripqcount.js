@@ -20,8 +20,8 @@ module.exports = class RipperQueueCountCommand extends Command {
 
   async run (message) {
     const resp = await fetch(process.env.RIPER_QUEUE_COUNT_URL)
-    const msg = await resp.text()
-    logger.debug({ msg })
-    return message.say(msg)
+    const count = (await resp.json()).count
+    logger.debug({ count })
+    return message.say(`Ripper Queue length: \`${count}\``)
   }
 }
