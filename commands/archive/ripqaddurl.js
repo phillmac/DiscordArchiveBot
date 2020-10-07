@@ -28,7 +28,7 @@ module.exports = class RipperQueueAddUrlCommand extends Command {
   async run (message, { url }) {
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_U_URL, {
       method: 'post',
-      body: `url=${url}`
+      body: {url}
     })
     const status = await resp.text()
     logger.debug({ url })
