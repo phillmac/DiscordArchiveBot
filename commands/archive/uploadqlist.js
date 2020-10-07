@@ -12,12 +12,12 @@ module.exports = class UploadQueueListCommand extends Command {
     })
   }
 
-  run (message) {
+  async run (message) {
     this.client.archive.uploadQueue.ensure(message.guild.id, [])
     const uploadQueue = this.client.archive.uploadQueue.get(message.guild.id)
-    message.say('Upload queue contents:')
+    await message.say('Upload queue contents:')
     for (const qi of uploadQueue) {
-      message.code(null, `${uploadQueue.indexOf(qi)}). ${qi.galleryName} ${qi.galleryType}`)
+      await message.code(null, `${uploadQueue.indexOf(qi)}). ${qi.galleryName} ${qi.galleryType}`)
     }
   }
 }
