@@ -43,7 +43,7 @@ module.exports = class RipperQueueAddCommand extends Command {
       headers: { 'Content-Type': 'application/json' }
     })
     const status = await resp.text()
-    logger.debug({ galleryName, galleryType, msg })
+    logger.debug({ galleryName, galleryType, priority, status })
     return message.say(`Added \`${galleryName} ${galleryType} ${priority}\`to ripper queue with forced full crawl. Status: ${status}`)
   }
 }
