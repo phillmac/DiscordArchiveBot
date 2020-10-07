@@ -28,6 +28,6 @@ module.exports = class UploadQueueAddCommand extends Command {
   run (message, { galleryName, galleryType }) {
     this.client.archive.uploadQueue.ensure(message.guild.id, [])
     this.client.archive.uploadQueue.remove(message.guild.id, (i) => i.galleryName === galleryName && i.galleryType === galleryType)
-    return message.say(`Removed ${galleryName} ${galleryType} from upload queue`)
+    return message.say(`Removed \`${galleryName} ${galleryType}\` from upload queue`)
   }
 }
