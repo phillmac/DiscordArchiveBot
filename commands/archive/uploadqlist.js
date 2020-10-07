@@ -17,7 +17,7 @@ module.exports = class UploadQueueListCommand extends Command {
     const uploadQueue = this.client.archive.uploadQueue.get(message.guild.id)
     message.say('Upload queue contents:')
     for (const qi of uploadQueue) {
-      message.code(`${uploadQueue.indexOf(qi)}). ${qi.galleryName} ${qi.galleryType}`, {})
+      message.code(null, `${uploadQueue.indexOf(qi)}). ${qi.galleryName} ${qi.galleryType}`)
     }
   }
 }
