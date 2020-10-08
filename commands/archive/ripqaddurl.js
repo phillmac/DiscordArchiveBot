@@ -7,7 +7,7 @@ if (!process.env.RIPER_QUEUE_ADD_U_URL) {
 }
 
 module.exports = class RipperQueueAddUrlCommand extends Command {
-  constructor(client) {
+  constructor (client) {
     super(client, {
       name: 'ripqaddurl',
       aliases: ['rip-queue-add-url', 'rqau'],
@@ -25,14 +25,14 @@ module.exports = class RipperQueueAddUrlCommand extends Command {
     })
   }
 
-  hasPermission(msg) {
-    if (!this.client.isOwner(msg.author)) return 'Only the bot owner(s) may use this command.';
-    return true;
+  hasPermission (msg) {
+    if (!this.client.isOwner(msg.author)) return 'Only the bot owner(s) may use this command.'
+    return true
   }
 
-  async run(message, { url }) {
-    const params = new URLSearchParams();
-    params.append('url', url);
+  async run (message, { url }) {
+    const params = new URLSearchParams()
+    params.append('url', url)
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_U_URL, {
       method: 'POST',
       body: params

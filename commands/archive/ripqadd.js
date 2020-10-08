@@ -7,7 +7,7 @@ if (!process.env.RIPER_QUEUE_ADD_URL) {
 }
 
 module.exports = class RipperQueueAddCommand extends Command {
-  constructor(client) {
+  constructor (client) {
     super(client, {
       name: 'ripqadd',
       aliases: ['rip-queue-add', 'rqa'],
@@ -31,12 +31,12 @@ module.exports = class RipperQueueAddCommand extends Command {
     })
   }
 
-  hasPermission(msg) {
-    if (!this.client.isOwner(msg.author)) return 'Only the bot owner(s) may use this command.';
-    return true;
+  hasPermission (msg) {
+    if (!this.client.isOwner(msg.author)) return 'Only the bot owner(s) may use this command.'
+    return true
   }
 
-  async run(message, { galleryName, galleryType }) {
+  async run (message, { galleryName, galleryType }) {
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_URL, {
       method: 'POST',
       body: JSON.stringify([{ deviant: galleryName, mode: galleryType, priority: 110 }]),
