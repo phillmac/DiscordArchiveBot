@@ -25,6 +25,11 @@ module.exports = class RipperQueueAddUrlCommand extends Command {
     })
   }
 
+  hasPermission(msg) {
+    if (!this.client.isOwner(msg.author)) return 'Only the bot owner(s) may use this command.';
+    return true;
+  }
+
   async run(message, { url }) {
     const params = new URLSearchParams();
     params.append('url', url);
