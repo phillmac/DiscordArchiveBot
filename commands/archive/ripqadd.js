@@ -42,8 +42,8 @@ module.exports = class RipperQueueAddCommand extends Command {
       body: JSON.stringify([{ deviant: galleryName, mode: galleryType, priority: 110 }]),
       headers: { 'Content-Type': 'application/json' }
     })
-    const msg = await resp.text()
-    logger.debug({ galleryName, galleryType, msg })
-    return message.say(`Added ${JSON.stringify({ galleryName, galleryType, msg })} to ripper queue`)
+    const status = await resp.text()
+    logger.debug({ galleryName, galleryType, status })
+    return message.say(`Added \`${galleryName} ${galleryType}\` to ripper queue. Status: ${status}`)
   }
 }
