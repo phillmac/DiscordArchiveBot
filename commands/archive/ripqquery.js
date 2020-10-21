@@ -10,7 +10,7 @@ module.exports = class RipperQueueAddCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'ripqquery',
-      aliases: ['rip-queue-add', 'rqq'],
+      aliases: ['rip-queue-query', 'rqq'],
       group: 'archive',
       memberName: 'ripqquery',
       description: 'Queries if a gallery is queued to be ripped',
