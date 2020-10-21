@@ -28,18 +28,19 @@ module.exports = class RipperQueueAddCommand extends Command {
   async run(message, { galleryName }) {
     try {
       const resp = await fetch(process.env.RIPER_QUEUE_QUERY_URL)
-      if (resp.status === 200)
+      if (resp.status === 200) {
         const matches = await (resp.json())
           .map(qi => Object.fromEntries(qi))
           .filter(qi => qi?.deviant?.toLowerCase() === galleryName.toLowerCase())
 
-      if (matches.length === 0) {
-        return message.say(` No queue items found for \`${galleryName}\`.`)
+        if (matches.length === 0) {
+          return message.say(` No queue items found for \`${galleryName}\`.`)
+        }
+        return message.say(matches
+          .map(m => `\`Name: ${m?.deviant} Mode: ${m?.mode} priority: ${m?.priority}\``)
+          .join('\n')
+        )
       }
-      return message.say(matches
-        .map(m => `\`Name: ${m?.deviant} Mode: ${m?.mode} priority: ${m?.priority}\``)
-        .join('\n')
-      )
     } catch (err) {
       logger.error(err)
     }
