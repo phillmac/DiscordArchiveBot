@@ -7,7 +7,7 @@ if (!process.env.RIPER_QUEUE_QUERY_URL) {
 }
 
 module.exports = class RipperQueueAddCommand extends Command {
-  constructor(client) {
+  constructor (client) {
     super(client, {
       name: 'ripqquery',
       aliases: ['rip-queue-query', 'rqq'],
@@ -25,7 +25,7 @@ module.exports = class RipperQueueAddCommand extends Command {
     })
   }
 
-  async run(message, { galleryName }) {
+  async run (message, { galleryName }) {
     try {
       const resp = await fetch(process.env.RIPER_QUEUE_QUERY_URL)
       if (resp.status === 200) {
