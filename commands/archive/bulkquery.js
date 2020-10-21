@@ -33,7 +33,7 @@ module.exports = class RipperQueueAddCommand extends Command {
         if (!match) {
           return message.say(`No bulk items found for \`${galleryName}\`.`)
         }
-        return message.say(match
+        return message.say(Object.keys(match)
           .map(mode => `**${galleryName}**\t*${match[mode]}*\n${match[mode] ? match[mode].join('\n') : ''}`
             .join('\n')
           ))
