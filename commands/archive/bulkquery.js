@@ -35,7 +35,7 @@ module.exports = class RipperQueueAddCommand extends Command {
         }
         logger.debug(match)
         const modes = Object.keys(match)
-        .map(m =>`\t*${match[m]}*\n\t\t${match[m] ? match[m].join('\n\t\t') : ''}`)
+        .map(m =>`\t*${m}*\n\t\t${match[m] ? match[m].join('\n\t\t') : ''}`)
         return message.say(`**${galleryName}**${modes.join('\n')}`)
       }
     } catch (err) {
