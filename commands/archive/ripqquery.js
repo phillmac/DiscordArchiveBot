@@ -42,7 +42,7 @@ module.exports = class RipperQueueAddCommand extends Command {
         )
       }
     } catch (err) {
-      logger.error(err)
+      logger.error(err.toString())
     }
     return message.say('Unable to query queue manager')
   }
