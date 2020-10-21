@@ -29,7 +29,7 @@ module.exports = class RipperQueueAddCommand extends Command {
     try {
       const resp = await fetch(process.env.RIPER_QUEUE_QUERY_URL)
       if (resp.status === 200) {
-        const matches = await (resp.json())
+        const matches = (await resp.json())
           .map(qi => Object.fromEntries(qi))
           .filter(qi => qi?.deviant?.toLowerCase() === galleryName.toLowerCase())
 
