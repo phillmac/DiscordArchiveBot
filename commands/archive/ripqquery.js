@@ -27,7 +27,7 @@ module.exports = class RipperQueueAddCommand extends Command {
 
   async run (message, { galleryName }) {
     const resp = await fetch(process.env.RIPER_QUEUE_QUERY_URL)
-    const matches = await resp.json()
+    const matches = await (resp.json())
       .map(qi => Object.fromEntries(qi))
       .filter(qi => qi?.deviant?.toLowerCase() === galleryName.toLowerCase())
 
