@@ -10,7 +10,6 @@ if (!process.env.BULK_QUERY_URL) {
   throw new Error('BULK_QUERY_URL is required')
 }
 
-
 module.exports = class RipperQueueAddCommand extends Command {
   constructor (client) {
     super(client, {
@@ -48,11 +47,10 @@ module.exports = class RipperQueueAddCommand extends Command {
       }
     } catch (err) {
       logger.error(err.toString())
+      message.say('Error: Unable to query queue manager.')
     }
-    message.say('Error: Unable to query queue manager.')
-  }
 
-  try {
+    try {
       const resp = await fetch(process.env.BULK_QUERY_URL)
       if (resp.status === 200) {
         const match = (await resp.json())[galleryName.toLowerCase()]
@@ -61,7 +59,7 @@ module.exports = class RipperQueueAddCommand extends Command {
         }
         logger.debug(match)
         const modes = Object.keys(match)
-        .map(m =>`\t*${m}*\n\t\t${match[m] ? match[m].join('\n\t\t') : ''}`)
+          .map(m => `\t*${m}*\n\t\t${match[m] ? match[m].join('\n\t\t') : ''}`)
         return message.say(`**${galleryName}**\n${modes.join('\n')}`)
       }
     } catch (err) {
