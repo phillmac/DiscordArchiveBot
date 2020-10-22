@@ -39,11 +39,12 @@ module.exports = class RipperQueueAddCommand extends Command {
 
         if (matches.length === 0) {
           message.say(` No queue items found for \`${galleryName}\`.`)
+        } else {
+          message.say('Rip Queue:\n' + matches
+            .map(m => `\`Name: ${m?.deviant} Mode: ${m?.mode} priority: ${m?.priority}\``)
+            .join('\n')
+          )
         }
-        message.say('Rip Queue:\n' + matches
-          .map(m => `\`Name: ${m?.deviant} Mode: ${m?.mode} priority: ${m?.priority}\``)
-          .join('\n')
-        )
       }
     } catch (err) {
       logger.error(err.toString())
