@@ -40,7 +40,7 @@ module.exports = class RipperQueueAddCommand extends Command {
         if (matches.length === 0) {
           message.say(` No queue items found for \`${galleryName}\`.`)
         }
-        message.say(matches
+        message.say('Rip Queue:\n' + matches
           .map(m => `\`Name: ${m?.deviant} Mode: ${m?.mode} priority: ${m?.priority}\``)
           .join('\n')
         )
@@ -60,7 +60,7 @@ module.exports = class RipperQueueAddCommand extends Command {
         logger.debug(match)
         const modes = Object.keys(match)
           .map(m => `\t*${m}*\n\t\t${match[m] ? match[m].join('\n\t\t') : ''}`)
-        return message.say(`**${galleryName}**\n${modes.join('\n')}`)
+        return message.say(`Bulk Items:\n**${galleryName}**\n${modes.join('\n')}`)
       }
     } catch (err) {
       logger.error(err.toString())
