@@ -46,14 +46,14 @@ module.exports = class RipperQueueAddSubFullCommand extends Command {
     return true
   }
 
-  async run (message, { galleryName, galleryType, priority }) {
+  async run (message, { galleryName, galleryType, subType, priority }) {
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_URL, {
       method: 'POST',
-      body: JSON.stringify([{ deviant: galleryName, mode: galleryType, priority, full_crawl: true }]),
+      body: JSON.stringify([{ deviant: galleryName, mode: galleryType, mval: subType, priority, full_crawl: true }]),
       headers: { 'Content-Type': 'application/json' }
     })
     const status = await resp.text()
-    logger.debug({ galleryName, galleryType, priority, status })
-    return message.say(`Added \`${galleryName} ${galleryType} ${priority}\` to ripper queue with forced full crawl. Status: ${status}`)
+    logger.debug({ galleryName, galleryType, priority, subType, status })
+    return message.say(`Added \`${galleryName} ${galleryType} ${subType} ${priority}\` to ripper queue with forced full crawl. Status: ${status}`)
   }
 }
