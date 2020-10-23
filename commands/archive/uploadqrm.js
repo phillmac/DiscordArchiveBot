@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando')
 
-module.exports = class UploadQueueAddCommand extends Command {
+module.exports = class UploadQueueRemoveCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'uploadqrm',

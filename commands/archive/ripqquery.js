@@ -6,7 +6,7 @@ if (!process.env.RIPER_QUEUE_QUERY_URL) {
   throw new Error('RIPER_QUEUE_QUERY_URL is required')
 }
 
-module.exports = class RipperQueueAddCommand extends Command {
+module.exports = class RipperQueueQueryCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'ripqquery',

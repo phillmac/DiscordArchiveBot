@@ -6,7 +6,7 @@ if (!process.env.RIPER_QUEUE_ADD_URL) {
   throw new Error('RIPER_QUEUE_ADD_URL is required')
 }
 
-module.exports = class RipperQueueAddCommand extends Command {
+module.exports = class RipperQueueAddFullCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'ripqaddfull',
