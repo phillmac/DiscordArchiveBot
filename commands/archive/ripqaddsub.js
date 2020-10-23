@@ -10,7 +10,7 @@ module.exports = class RipperQueueAddSubCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'ripqaddsub',
-      aliases: ['rip-queue-add', 'rqas'],
+      aliases: ['rip-queue-add-sub', 'rqas'],
       group: 'archive',
       memberName: 'ripqaddsub',
       description: 'Enques an existing gallery to be ripped',
