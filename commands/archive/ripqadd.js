@@ -26,6 +26,12 @@ module.exports = class RipperQueueAddCommand extends Command {
           prompt: 'Type of gallery to add to the rip queue',
           type: 'string',
           oneOf: ['gallery', 'favs']
+        },
+        {
+          key: 'priority',
+          prompt: 'Priority to assign job in the rip queue',
+          type: 'integer',
+          default: 60
         }
       ]
     })
