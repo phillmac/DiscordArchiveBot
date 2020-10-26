@@ -44,7 +44,7 @@ module.exports = class RipperQueueAddFullCommand extends Command {
   async run (message, { galleryName, galleryType, priority }) {
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_URL, {
       method: 'POST',
-      body: JSON.stringify([{ deviant: galleryName, mode: galleryType, priority, full_crawl: true }]),
+      body: JSON.stringify([{ deviant: galleryName, mode: galleryType.toLowerCase(), priority, full_crawl: true }]),
       headers: { 'Content-Type': 'application/json' }
     })
     const status = await resp.text()

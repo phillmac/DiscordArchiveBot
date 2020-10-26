@@ -44,7 +44,7 @@ module.exports = class RipperQueueAddSubCommand extends Command {
   async run (message, { galleryName, galleryType, subType }) {
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_URL, {
       method: 'POST',
-      body: JSON.stringify([{ deviant: galleryName, mode: galleryType, mval: subType, priority: 110 }]),
+      body: JSON.stringify([{ deviant: galleryName, mode: galleryType.toLowerCase(), mval: subType, priority: 110 }]),
       headers: { 'Content-Type': 'application/json' }
     })
     const status = await resp.text()
