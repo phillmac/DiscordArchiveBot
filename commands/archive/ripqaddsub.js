@@ -55,6 +55,6 @@ module.exports = class RipperQueueAddSubCommand extends Command {
     })
     const status = await resp.text()
     logger.debug({ galleryName, galleryType, subType, priority, status })
-    return message.say(`Added \`${galleryName} ${galleryType} ${priority} ${subType}\` to ripper queue. Status: ${status}`)
+    return message.say(`Added \`${galleryName} ${galleryType} ${subType} ${priority}\` to ripper queue. Status: ${status}`)
   }
 }
