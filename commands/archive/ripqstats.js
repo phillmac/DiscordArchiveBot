@@ -90,6 +90,7 @@ module.exports = class RipperQueueStatsCommand extends Command {
         const filtered = filterStats(stats, { mode, priority })
         const collated = collateStats(filtered)
         const formatted = formatStats(collated, { mode, priority })
+        console.log({collated})
         return message.say(formatted.join('\n'))
       }
     } catch (err) {
