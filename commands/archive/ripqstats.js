@@ -10,7 +10,7 @@ function filterStats(stats, filter) {
 
   const filterMatches = (s) => {
     for (const prop of Object.keys(filter)) {
-      if (s[prop] !== filter[prop]) return false
+      if ((filter[prop]) && (s[prop] !== filter[prop])) return false
     }
     return true
   }
