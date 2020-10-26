@@ -7,9 +7,9 @@ if (!process.env.RIPER_QUEUE_QUERY_URL) {
 }
 
 function filterStats(stats, filter) {
+  logger.debug({filter})
 
   const filterMatches = (s) => {
-    logger.debug({filter})
     for (const prop of Object.keys(filter)) {
       if ((filter[prop]) && (s[prop] !== filter[prop])) return false
     }
