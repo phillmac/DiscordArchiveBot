@@ -9,6 +9,7 @@ if (!process.env.RIPER_QUEUE_QUERY_URL) {
 function filterStats(stats, filter) {
 
   const filterMatches = (s) => {
+    logger.debug({filter})
     for (const prop of Object.keys(filter)) {
       if ((filter[prop]) && (s[prop] !== filter[prop])) return false
     }
@@ -45,7 +46,7 @@ function formatStats({ mode, priority }, filter) {
       }
     }
   }
-  results.push('*Priority*:')
+  results.push('**Priority**:')
   for (const p of Object.keys(priority)) {
     results.push(`\t*${p}*: \`${priority[p].length}\``)
     if (filter?.priority) {
