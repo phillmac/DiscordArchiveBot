@@ -104,7 +104,7 @@ module.exports = class RipperQueueStatsCommand extends Command {
         const collated = collateStats(filtered)
         const formatted = formatStats(collated, { mode, priority })
         const msgs = splitMessages(formatted)
-        logger.debug({ 'Messages': msgs.length })
+        logger.debug({ 'Messages': msgs.length, lengths: msgs.map(m=> m.length)  })
         return msgs
           .map(m => message.say(m))
       }
