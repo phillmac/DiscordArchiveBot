@@ -36,9 +36,9 @@ function collateStats(stats) {
 
 function formatStats({ mode, priority }, filter) {
   const results = []
-  results.push('*Mode*:')
+  results.push('**Mode**:')
   for (const m of Object.keys(mode)) {
-    results.push(`\t**${m}**: \`${mode[m].lenght}\``)
+    results.push(`\t*${m}*: \`${mode[m].length}\``)
     if (filter?.mode) {
       for (const fm of mode[m]) {
         results.push(`\t\t${fm?.deviant} ${fm?.mval} ${fm?.priority}`)
@@ -47,7 +47,7 @@ function formatStats({ mode, priority }, filter) {
   }
   results.push('*Priority*:')
   for (const p of Object.keys(priority)) {
-    results.push(`\t**${p}**: \`${priority[p].lenght}\``)
+    results.push(`\t*${p}*: \`${priority[p].length}\``)
     if (filter?.priority) {
       for (const fp of priority[p]) {
         results.push(`\t\t${fp?.deviant} ${fp?.mode} ${fp?.mval}`)
