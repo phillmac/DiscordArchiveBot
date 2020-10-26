@@ -62,7 +62,7 @@ function splitMessages(lines) {
   let pointer = 0
   while (remaining.length > 0) {
     const l = remaining.pop()
-    if (result[pointer].join('\n').length > 2000) pointer += 1
+    if (result[pointer].join('\n').length > 2000 - l.length) pointer += 1
     if (!result[pointer]) result[pointer] = []
     result[pointer].push(l)
   }
