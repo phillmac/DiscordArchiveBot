@@ -63,20 +63,20 @@ module.exports = class RipperQueueStatsCommand extends Command {
       aliases: ['rip-queue-stats', 'rqs'],
       group: 'archive',
       memberName: 'ripqstats',
-      description: 'Disiplays rip queue statistics',
+      description: 'Displays rip queue statistics',
       guildOnly: false,
       args: [
         {
           key: 'mode',
           prompt: 'Mode filter stats in the rip queue',
           type: 'string',
-          default: undefined
+          default: ''
         },
         {
           key: 'priority',
           prompt: 'Priority filter stats in the rip queue',
           type: 'integer',
-          default: undefined
+          default: ''
         }
       ]
     })
