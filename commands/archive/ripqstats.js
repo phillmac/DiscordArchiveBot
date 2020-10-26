@@ -60,7 +60,7 @@ function formatStats({ mode, priority }, filter) {
 }
 
 function splitMessages(lines) {
-  result = []
+  const result = [[]]
   const remaining = [...lines]
   let pointer = 0
   while (remaining) {
