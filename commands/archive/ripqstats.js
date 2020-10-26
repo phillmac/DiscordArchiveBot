@@ -21,7 +21,7 @@ function collateStats(stats) {
   const mode = {}
   const priority = {}
   for (const s of stats) {
-    console.log({s})
+    console.log({mode: s.mode, priority: s.priority})
     if (!mode[s.mode]) mode[s.mode] = []
     if (!priority[s.priority]) priority[s.priority] = []
 
