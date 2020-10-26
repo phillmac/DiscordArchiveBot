@@ -42,14 +42,14 @@ module.exports = class RipperQueueAddCommand extends Command {
     return true
   }
 
-  async run (message, { galleryName, galleryType }) {
+  async run (message, { galleryName, galleryType, priority }) {
     const resp = await fetch(process.env.RIPER_QUEUE_ADD_URL, {
       method: 'POST',
-      body: JSON.stringify([{ deviant: galleryName, mode: galleryType.toLowerCase(), priority: 110 }]),
+      body: JSON.stringify([{ deviant: galleryName, mode: galleryType.toLowerCase(), priority }]),
       headers: { 'Content-Type': 'application/json' }
     })
     const status = await resp.text()
-    logger.debug({ galleryName, galleryType, status })
-    return message.say(`Added \`${galleryName} ${galleryType}\` to ripper queue. Status: ${status}`)
+    logger.debug({ galleryName, galleryType, priority, status })
+    return message.say(`Added \`${galleryName} ${galleryType} ${priority}\` to ripper queue. Status: ${status}`)
   }
 }
