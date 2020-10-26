@@ -23,7 +23,6 @@ function collateStats(stats) {
   const mode = {}
   const priority = {}
   for (const s of stats) {
-    console.log({ mode: s.mode, priority: s.priority })
     if (!mode[s.mode]) mode[s.mode] = []
     if (!priority[s.priority]) priority[s.priority] = []
 
@@ -106,9 +105,10 @@ module.exports = class RipperQueueStatsCommand extends Command {
         const filtered = filterStats(stats, { mode, priority })
         const collated = collateStats(filtered)
         const formatted = formatStats(collated, { mode, priority })
-        console.log({ collated })
-        return splitMessages(formatted)
-          .map(msg => message.say(msg))
+        const msgs = splitMessages(formatted)
+        console.log({msgs})
+        return msgs
+          .map(m => message.say(m))
       }
     } catch (err) {
       logger.error(err.toString())
