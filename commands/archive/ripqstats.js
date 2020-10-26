@@ -7,7 +7,7 @@ if (!process.env.RIPER_QUEUE_QUERY_URL) {
 }
 
 function filterStats(stats, filter) {
-  logger.debug({filter})
+  logger.debug({ filter })
 
   const filterMatches = (s) => {
     for (const prop of Object.keys(filter)) {
@@ -59,6 +59,19 @@ function formatStats({ mode, priority }, filter) {
   return results
 }
 
+function splitMessages(lines) {
+  result = []
+  const remaining = [...lines]
+  let pointer = 0
+  while (remaining) {
+    const l = remaining.pop()
+    if (result[pointer].join('\n').length > 2000) pointer += 1
+    if (!result[pointer]) result[pointer] = []
+    result[pointer].push(l)
+  }
+  return result.map((r) => r.join('\n'))
+}
+
 module.exports = class RipperQueueStatsCommand extends Command {
   constructor(client) {
     super(client, {
@@ -94,7 +107,8 @@ module.exports = class RipperQueueStatsCommand extends Command {
         const collated = collateStats(filtered)
         const formatted = formatStats(collated, { mode, priority })
         console.log({ collated })
-        return message.say(formatted.join('\n'))
+        return splitMessages(formatted)
+          .map(msg => message.say(msg))
       }
     } catch (err) {
       logger.error(err.toString())
