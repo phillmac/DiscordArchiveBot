@@ -14,14 +14,15 @@ function filterStats(stats, filter) {
     }
     return true
   }
-  return stats.filter((s) => filterMatches(s))
+  return stats.map((s) => Object.fromEntries(s))
+    .filter((s) => filterMatches(s))
 }
 
 function collateStats(stats) {
   const mode = {}
   const priority = {}
   for (const s of stats) {
-    console.log({mode: s.mode, priority: s.priority})
+    console.log({ mode: s.mode, priority: s.priority })
     if (!mode[s.mode]) mode[s.mode] = []
     if (!priority[s.priority]) priority[s.priority] = []
 
@@ -91,12 +92,12 @@ module.exports = class RipperQueueStatsCommand extends Command {
         const filtered = filterStats(stats, { mode, priority })
         const collated = collateStats(filtered)
         const formatted = formatStats(collated, { mode, priority })
-        console.log({collated})
+        console.log({ collated })
         return message.say(formatted.join('\n'))
       }
     } catch (err) {
-        logger.error(err.toString())
-      }
-      return message.say('Error: Unable to query queue manager.')
+      logger.error(err.toString())
     }
+    return message.say('Error: Unable to query queue manager.')
+  }
 }
