@@ -6,7 +6,7 @@ if (!process.env.RIPER_QUEUE_QUERY_URL) {
   throw new Error('RIPER_QUEUE_QUERY_URL is required')
 }
 
-function filterStats(stats, filter) {
+function filterStats (stats, filter) {
   logger.debug({ filter })
 
   const filterMatches = (s) => {
@@ -19,7 +19,7 @@ function filterStats(stats, filter) {
     .filter((s) => filterMatches(s))
 }
 
-function collateStats(stats) {
+function collateStats (stats) {
   const mode = {}
   const priority = {}
   for (const s of stats) {
@@ -32,7 +32,7 @@ function collateStats(stats) {
   return { mode, priority }
 }
 
-function formatStats({ mode, priority }, filter) {
+function formatStats ({ mode, priority }, filter) {
   const results = []
   results.push('**Mode**:')
   for (const m of Object.keys(mode)) {
@@ -51,12 +51,11 @@ function formatStats({ mode, priority }, filter) {
         results.push(`\t\t${fp?.deviant} ${fp?.mode} ${fp?.mval}`)
       }
     }
-
   }
   return results
 }
 
-function splitMessages(lines) {
+function splitMessages (lines) {
   const result = [[]]
   const remaining = [...lines]
   let pointer = 0
@@ -70,7 +69,7 @@ function splitMessages(lines) {
 }
 
 module.exports = class RipperQueueStatsCommand extends Command {
-  constructor(client) {
+  constructor (client) {
     super(client, {
       name: 'ripqstats',
       aliases: ['rip-queue-stats', 'rqs'],
@@ -95,7 +94,7 @@ module.exports = class RipperQueueStatsCommand extends Command {
     })
   }
 
-  async run(message, { mode, priority }) {
+  async run (message, { mode, priority }) {
     try {
       const resp = await fetch(process.env.RIPER_QUEUE_QUERY_URL)
       if (resp.status === 200) {

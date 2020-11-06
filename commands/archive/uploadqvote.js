@@ -1,17 +1,16 @@
 const { Command } = require('discord.js-commando')
 
-function getRandom(arr, n) {
-  var result = new Array(n),
-      len = arr.length,
-      taken = new Array(len);
-  if (n > len)
-      throw new RangeError("getRandom: more elements taken than available");
+function getRandom (arr, n) {
+  const result = new Array(n)
+  let len = arr.length
+  const taken = new Array(len)
+  if (n > len) { throw new RangeError('getRandom: more elements taken than available') }
   while (n--) {
-      var x = Math.floor(Math.random() * len);
-      result[n] = arr[x in taken ? taken[x] : x];
-      taken[x] = --len in taken ? taken[len] : len;
+    const x = Math.floor(Math.random() * len)
+    result[n] = arr[x in taken ? taken[x] : x]
+    taken[x] = --len in taken ? taken[len] : len
   }
-  return result;
+  return result
 }
 
 module.exports = class UploadQueueVoteCommand extends Command {
@@ -32,11 +31,11 @@ module.exports = class UploadQueueVoteCommand extends Command {
     })
   }
 
-  run (message, {voteSize}) {
+  run (message, { voteSize }) {
     this.client.archive.uploadQueue.ensure(message.guild.id, [])
     const uploadQueue = [...this.client.archive.uploadQueue.get(message.guild.id)]
     if (uploadQueue.length > 0) {
-      const amount = voteSize <=  uploadQueue.length ? voteSize : uploadQueue.length
+      const amount = voteSize <= uploadQueue.length ? voteSize : uploadQueue.length
       const selection = getRandom(uploadQueue, amount).sort()
       message.say(`/poll "Vote on what to upload next!" ${selection.map(qi => `"${qi.galleryName} ${qi.galleryType}"`).join(' ')}`)
     } else {
