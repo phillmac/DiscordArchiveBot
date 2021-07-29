@@ -5,7 +5,7 @@ const path = require('path')
 
 const Enmap = require('enmap')
 
-const result = require('dotenv').config({path: './config/.env'})
+const result = require('dotenv').config()
 
 if (result.error) {
   throw result.error
