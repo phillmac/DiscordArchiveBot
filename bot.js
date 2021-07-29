@@ -5,7 +5,11 @@ const path = require('path')
 
 const Enmap = require('enmap')
 
-require('dotenv').config()
+const result = require('dotenv').config({path: './config/.env'})
+
+if (result.error) {
+  throw result.error
+}
 
 // Configure logger settings
 logger.remove(logger.transports.Console)
