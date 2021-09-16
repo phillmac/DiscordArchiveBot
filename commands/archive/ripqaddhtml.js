@@ -9,7 +9,7 @@ if (!process.env.RIPER_QUEUE_ADD_URL) {
 module.exports = class RipperQueueAddFullCommand extends Command {
   constructor (client) {
     super(client, {
-      name: 'ripqaddfull',
+      name: 'ripqaddhtml',
       aliases: ['rip-queue-add-html', 'rqah'],
       group: 'archive',
       memberName: 'ripqaddhtml',
